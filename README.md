@@ -1,6 +1,6 @@
 # Next.js Starter Template
 
-A production-ready Next.js starter with TypeScript, Tailwind CSS, ESLint (Airbnb), Prettier, Husky, and GitHub Actions CI.
+A production-ready Next.js starter with TypeScript, Tailwind CSS, ESLint (Airbnb), Prettier, Husky, Jest, GitHub Actions CI, and CodeRabbit AI code review.
 
 ## Tech Stack
 
@@ -10,13 +10,15 @@ A production-ready Next.js starter with TypeScript, Tailwind CSS, ESLint (Airbnb
 - **Linting** — ESLint 9 + Airbnb style guide
 - **Formatting** — Prettier
 - **Git hooks** — Husky + lint-staged (pre-commit)
+- **Testing** — Jest 29 + ts-jest
 - **CI** — GitHub Actions
+- **Code Review** — CodeRabbit AI
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 24+
 - npm 10+
 
 ### Installation
@@ -47,6 +49,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `npm run lint:fix`         | Auto-fix ESLint issues            |
 | `npm run format`           | Format all files with Prettier    |
 | `npm run format:check`     | Check formatting without writing  |
+| `npm run test`             | Run all tests                     |
+| `npm run test:unit`        | Run unit tests                    |
+| `npm run test:unit:watch`  | Run unit tests in watch mode      |
+| `npm run test:integration` | Run integration tests             |
+| `npm run test:coverage`    | Run tests with coverage report    |
 
 ## Code Quality
 
@@ -55,8 +62,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 Husky runs on every commit:
 
 1. **TypeScript** — `tsc --noEmit`
-2. **ESLint** — auto-fix staged `*.{ts,tsx}` files
-3. **Prettier** — format staged files
+2. **Tests** — unit + integration
+3. **ESLint** — auto-fix staged `*.{ts,tsx}` files
+4. **Prettier** — format staged files
 
 ### ESLint
 
@@ -86,22 +94,42 @@ Install the recommended extensions (prompted automatically on project open):
 
 Errors are highlighted in the editor and auto-fixed on save.
 
+## Testing
+
+Tests are split into two suites:
+
+| Suite       | Location                     | Config                        |
+| ----------- | ---------------------------- | ----------------------------- |
+| Unit        | `src/__tests__/unit/`        | `jest.unit.config.cjs`        |
+| Integration | `src/__tests__/integration/` | `jest.integration.config.cjs` |
+
+File naming convention: `*.unit.test.ts` / `*.integration.test.ts`
+
 ## CI / GitHub Actions
 
-On every pull request to `dev` or `main`, the `code-quality` job runs:
+On every pull request to `dev` or `main`, four sequential jobs run:
 
-1. TypeScript check
-2. ESLint
-3. Prettier format check
+1. **Type Check** — `tsc --noEmit`
+2. **Lint** — ESLint + Prettier format check
+3. **Unit Tests** — Jest unit suite
+4. **Integration Tests** — Jest integration suite
+
+All checks must pass before merging.
 
 Config: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+
+## Code Review
+
+[CodeRabbit](https://coderabbit.ai) automatically reviews every PR targeting `dev` or `main`. It follows project-specific guidelines for TypeScript, tests, and CI workflows defined in [`.coderabbit.yaml`](.coderabbit.yaml).
+
+If CodeRabbit requests changes, the PR is blocked until the issues are resolved or the review is dismissed.
 
 ## Branch Protection
 
 `dev` and `main` are protected:
 
 - Direct push is blocked — changes go through PRs only
-- PR requires all CI checks to pass before merging
+- All CI checks must pass before merging
 - Branches are deleted automatically after merge
 
 To apply the same rules to a new repository created from this template:
@@ -116,10 +144,13 @@ Requires [GitHub CLI](https://cli.github.com/) with `administration:write` permi
 
 ```
 src/
-└── app/
-    ├── layout.tsx   # Root layout
-    ├── page.tsx     # Home page
-    └── globals.css  # Global styles
+├── app/
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Home page
+│   └── globals.css        # Global styles
+└── __tests__/
+    ├── unit/              # Unit tests
+    └── integration/       # Integration tests
 ```
 
 ## License
