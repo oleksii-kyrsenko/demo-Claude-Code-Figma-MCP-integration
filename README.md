@@ -1,44 +1,89 @@
 # Claude Code + Figma MCP Integration
 
-A demo project showcasing integration between [Claude Code](https://claude.ai/code) and Figma via the Model Context Protocol (MCP).
+A Next.js demo project showcasing integration between [Claude Code](https://claude.ai/code) and Figma via the Model Context Protocol (MCP).
 
-## Overview
+## Tech Stack
 
-This project demonstrates how to connect Claude Code to Figma using an MCP server, enabling AI-assisted design workflows — inspect components, generate code from designs, and automate design tasks directly from the terminal.
+- **Framework** — Next.js 16 (App Router)
+- **Language** — TypeScript
+- **Styling** — Tailwind CSS v4
+- **Linting** — ESLint 9 + Airbnb style guide
+- **Formatting** — Prettier
+- **Git hooks** — Husky + lint-staged (pre-commit)
 
-## Prerequisites
+## Getting Started
 
-- [Claude Code](https://claude.ai/code) installed
-- Figma account with a personal access token
-- Node.js 18+
+### Prerequisites
 
-## Setup
+- Node.js 20+
+- npm 10+
 
-1. Clone the repository:
-   ```bash
-   git clone <repo-url>
-   cd demo-Claude-Code-Figma-MCP-integration
-   ```
+### Installation
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+git clone <repo-url>
+cd demo-Claude-Code-Figma-MCP-integration
+npm install
+```
 
-3. Configure environment variables:
-   ```bash
-   cp .env.example .env
-   # Add your Figma personal access token to .env
-   ```
+### Development
 
-4. Add the MCP server to Claude Code:
-   ```bash
-   claude mcp add figma
-   ```
+```bash
+npm run dev
+```
 
-## Usage
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-_Usage instructions will be added as the project develops._
+## Scripts
+
+| Command                | Description                      |
+| ---------------------- | -------------------------------- |
+| `npm run dev`          | Start development server         |
+| `npm run build`        | Build for production             |
+| `npm run start`        | Start production server          |
+| `npm run lint`         | Check code with ESLint           |
+| `npm run lint:fix`     | Auto-fix ESLint issues           |
+| `npm run format`       | Format all files with Prettier   |
+| `npm run format:check` | Check formatting without writing |
+
+## Code Quality
+
+### ESLint + Airbnb
+
+ESLint is configured with the Airbnb style guide (`eslint-config-airbnb` + `eslint-config-airbnb-typescript`) and integrated with Prettier to avoid rule conflicts.
+
+Config: [`eslint.config.mjs`](eslint.config.mjs)
+
+### Prettier
+
+Prettier config: [`.prettierrc`](.prettierrc)
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100
+}
+```
+
+### Pre-commit Hook
+
+Husky runs lint-staged before every commit:
+
+- `*.{ts,tsx}` — ESLint fix + Prettier
+- `*.{js,mjs,cjs}` — Prettier
+- `*.{json,css,md}` — Prettier
+
+## Project Structure
+
+```
+src/
+└── app/
+    ├── layout.tsx   # Root layout
+    ├── page.tsx     # Home page
+    └── globals.css  # Global styles
+```
 
 ## License
 
