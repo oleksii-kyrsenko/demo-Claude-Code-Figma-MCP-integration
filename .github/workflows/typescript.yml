@@ -1,4 +1,4 @@
-name: CI
+name: TypeScript
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  code-quality:
+  typescript:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,8 +20,5 @@ jobs:
 
       - run: npm ci
 
-      - name: ESLint
-        run: npm run lint
-
-      - name: Prettier
-        run: npm run format:check
+      - name: TypeScript
+        run: npm run typescript:check
