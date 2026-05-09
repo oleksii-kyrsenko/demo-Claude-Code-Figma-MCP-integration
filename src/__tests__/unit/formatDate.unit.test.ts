@@ -46,4 +46,16 @@ describe('formatRelativeTime', () => {
     tomorrow.setDate(tomorrow.getDate() + 1);
     expect(formatRelativeTime(tomorrow)).toBe('May 10, 2026');
   });
+
+  it('returns formatted date for 30+ days ago', () => {
+    const fortyDaysAgo = new Date(fixedNow);
+    fortyDaysAgo.setDate(fortyDaysAgo.getDate() - 40);
+    expect(formatRelativeTime(fortyDaysAgo)).toBe('March 30, 2026');
+  });
+
+  it('returns singular form for 1 week ago', () => {
+    const oneWeekAgo = new Date(fixedNow);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    expect(formatRelativeTime(oneWeekAgo)).toBe('1 week ago');
+  });
 });
