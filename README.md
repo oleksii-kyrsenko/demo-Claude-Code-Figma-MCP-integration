@@ -77,7 +77,8 @@ To add a new variable:
 
 | Command                          | Description                                  |
 | -------------------------------- | -------------------------------------------- |
-| `npm run dev`                    | Start development server                     |
+| `npm run dev`                    | Start development server (webpack)           |
+| `npm run dev:turbo`              | Start development server (Turbopack)         |
 | `npm run build`                  | Production build                             |
 | `npm run start`                  | Start production server                      |
 | `npm run analyze`                | Build + open bundle size visualiser          |
@@ -205,6 +206,15 @@ bash scripts/setup-branch-protection.sh
 ```
 
 Requires [GitHub CLI](https://cli.github.com/) with `administration:write` permission.
+
+## Dev server: webpack vs. Turbopack
+
+This template defaults to `next dev --webpack` for compatibility with low-memory machines (≤8 GB RAM). On Apple Silicon M1/M2 base models, Turbopack's Rust worker pool can consume 5–7 GB RSS during initial compilation, causing severe memory pressure or system freezes.
+
+| Script              | Bundler   | Use when                               |
+| ------------------- | --------- | -------------------------------------- |
+| `npm run dev`       | webpack   | Default. Stable on 8 GB machines.      |
+| `npm run dev:turbo` | Turbopack | Faster HMR. Recommended on ≥16 GB RAM. |
 
 ## Contributing
 
