@@ -39,7 +39,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
-```
+```text
 src/
 ├── app/
 │   ├── layout.tsx         # Root layout (fonts, metadata)
@@ -160,7 +160,7 @@ E2E tests run against a live dev server (started automatically by Playwright via
 
 On every pull request to `dev` or `main`, five sequential jobs run:
 
-```
+```text
 Type Check → Lint → Unit Tests → Integration Tests → E2E Tests
 ```
 
