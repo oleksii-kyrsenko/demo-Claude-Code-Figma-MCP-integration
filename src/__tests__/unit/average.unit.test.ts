@@ -8,4 +8,8 @@ describe('average', () => {
   it('returns the value for a single-element array', () => {
     expect(average([5])).toBe(5);
   });
+
+  it('throws when given an empty array', () => {
+    expect(() => average([])).toThrow(RangeError);
+  });
 });
