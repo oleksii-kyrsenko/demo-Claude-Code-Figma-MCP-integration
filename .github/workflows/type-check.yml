@@ -1,4 +1,4 @@
-name: TypeScript
+name: Type Check
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  typescript:
+  type-check:
     runs-on: ubuntu-latest
 
     steps:
