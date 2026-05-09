@@ -28,4 +28,3 @@ jobs:
 
       - name: Prettier
         run: npm run format:check
-
