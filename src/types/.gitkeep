@@ -1,0 +1,9 @@
+// Place shared TypeScript types and interfaces here.
+//
+// Example structure:
+//   src/types/api.ts      — API request / response shapes
+//   src/types/models.ts   — domain model types (User, Post, …)
+//   src/types/common.ts   — generic utility types (Nullable<T>, ID, …)
+//
+// Import using the path alias:
+//   import type { User } from '@/types/models';
