@@ -1,4 +1,4 @@
-name: CI
+name: Lint
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  code-quality:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
