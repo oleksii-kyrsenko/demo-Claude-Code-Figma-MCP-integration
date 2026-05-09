@@ -1,2 +1,3 @@
 npm run typescript:check
+npm test
 npx lint-staged
