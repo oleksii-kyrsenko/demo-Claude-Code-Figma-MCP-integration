@@ -1,4 +1,4 @@
-name: CI
+name: Unit Tests
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  code-quality:
+  unit-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,11 +20,5 @@ jobs:
 
       - run: npm ci
 
-      - name: TypeScript
-        run: npm run typescript:check
-
-      - name: ESLint
-        run: npm run lint
-
-      - name: Prettier
-        run: npm run format:check
+      - name: Unit Tests
+        run: npm run test:unit
