@@ -27,13 +27,9 @@ reviews:
       instructions: |
         Review for security best practices, pinned action versions, and proper secret handling.
 
-  finishing_touches:
+  pre_merge_checks:
     docstrings:
-      enabled: false
+      mode: 'off'
 
 chat:
   auto_reply: true
-
-finishing_touches:
-  docstrings:
-    enabled: false
