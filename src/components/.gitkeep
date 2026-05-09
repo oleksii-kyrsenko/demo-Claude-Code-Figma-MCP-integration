@@ -1,0 +1,10 @@
+// Place reusable UI components here.
+//
+// Example structure:
+//   src/components/ui/Button.tsx       — primitive UI elements
+//   src/components/ui/Input.tsx
+//   src/components/layout/Header.tsx   — layout-level components
+//   src/components/layout/Footer.tsx
+//
+// Import using the path alias:
+//   import { Button } from '@/components/ui/Button';

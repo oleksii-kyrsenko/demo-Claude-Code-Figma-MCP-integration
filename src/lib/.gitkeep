@@ -1,0 +1,10 @@
+// Place shared library code and third-party client initialisation here.
+//
+// Example structure:
+//   src/lib/api.ts        — base fetch/axios client
+//   src/lib/auth.ts       — NextAuth or custom auth helpers
+//   src/lib/db.ts         — database client (Prisma, Drizzle, …)
+//   src/lib/utils.ts      — small utility functions (cn, formatters, …)
+//
+// Import using the path alias:
+//   import { cn } from '@/lib/utils';

@@ -1,0 +1,10 @@
+// Place custom React hooks here.
+//
+// Example structure:
+//   src/hooks/useLocalStorage.ts   — persist state to localStorage
+//   src/hooks/useDebounce.ts       — debounce a rapidly-changing value
+//   src/hooks/useMediaQuery.ts     — react to CSS media query changes
+//
+// Convention: every file must start with "use" and export a single hook.
+// Import using the path alias:
+//   import { useDebounce } from '@/hooks/useDebounce';

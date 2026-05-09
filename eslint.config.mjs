@@ -14,7 +14,14 @@ const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default defineConfig([
-  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
+  globalIgnores([
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+    'playwright.config.ts',
+    'src/__tests__/e2e/**',
+  ]),
 
   // Airbnb style guide (JS + React rules)
   ...compat.extends('airbnb'),
@@ -66,6 +73,12 @@ export default defineConfig([
 
       // Removed in @typescript-eslint v8 (airbnb-typescript still references it)
       '@typescript-eslint/lines-between-class-members': 'off',
+
+      // Config files (next.config.ts, knip.config.ts) import devDependencies intentionally
+      'import/no-extraneous-dependencies': [
+        'error',
+        { devDependencies: ['*.config.ts', '*.config.mjs', '*.config.cjs'] },
+      ],
     },
   },
 ]);
