@@ -10,6 +10,7 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "typescript:check": "tsc --noEmit --project tsconfig.json",
     "prepare": "husky"
   },
   "dependencies": {
