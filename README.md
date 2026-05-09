@@ -52,7 +52,7 @@ src/
 ├── lib/                   # Third-party clients, shared utilities
 ├── types/                 # Shared TypeScript types and interfaces
 ├── env.ts                 # Type-safe environment variable schema
-├── middleware.ts           # Security headers, auth guards, redirects
+├── proxy.ts               # Security headers, auth guards, redirects
 └── __tests__/
     ├── unit/              # *.unit.test.ts
     ├── integration/       # *.integration.test.ts
@@ -77,7 +77,8 @@ To add a new variable:
 
 | Command                          | Description                                  |
 | -------------------------------- | -------------------------------------------- |
-| `npm run dev`                    | Start development server                     |
+| `npm run dev`                    | Start development server (webpack)           |
+| `npm run dev:turbo`              | Start development server (Turbopack)         |
 | `npm run build`                  | Production build                             |
 | `npm run start`                  | Start production server                      |
 | `npm run analyze`                | Build + open bundle size visualiser          |
@@ -182,11 +183,13 @@ Config: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 If CodeRabbit requests changes, the PR is blocked until the issues are resolved or the review is dismissed.
 
-## Middleware
+## Proxy
 
-[`src/middleware.ts`](src/middleware.ts) runs on every request and applies security headers by default (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`).
+[`src/proxy.ts`](src/proxy.ts) runs on every request and applies security headers by default (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`).
 
 Extend it for auth guards, i18n redirects, or feature flags.
+
+> **Note:** In Next.js 16, `middleware.ts` was renamed to `proxy.ts`. The API is identical — `NextRequest`, `NextResponse`, and `matcher` config all work the same way.
 
 ## Branch Protection
 
@@ -203,6 +206,15 @@ bash scripts/setup-branch-protection.sh
 ```
 
 Requires [GitHub CLI](https://cli.github.com/) with `administration:write` permission.
+
+## Dev server: webpack vs. Turbopack
+
+This template defaults to `next dev --webpack` for compatibility with low-memory machines (≤8 GB RAM). On Apple Silicon M1/M2 base models, Turbopack's Rust worker pool can consume 5–7 GB RSS during initial compilation, causing severe memory pressure or system freezes.
+
+| Script              | Bundler   | Use when                               |
+| ------------------- | --------- | -------------------------------------- |
+| `npm run dev`       | webpack   | Default. Stable on 8 GB machines.      |
+| `npm run dev:turbo` | Turbopack | Faster HMR. Recommended on ≥16 GB RAM. |
 
 ## Contributing
 
