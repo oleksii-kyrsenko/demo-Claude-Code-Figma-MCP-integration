@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Proxy runs on every request that matches the `matcher` config below.
+// Middleware runs on every request that matches the `matcher` config below.
 //
 // Common use-cases:
 //   - Authentication: redirect unauthenticated users to /login
@@ -19,9 +19,9 @@ import type { NextRequest } from 'next/server';
 //   }
 
 // The request parameter is unused in the base implementation but available for
-// custom proxy logic (auth, i18n, redirects, etc.).
+// custom middleware logic (auth, i18n, redirects, etc.).
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function proxy(_request: NextRequest) {
+export function middleware(_request: NextRequest) {
   const response = NextResponse.next();
 
   // Security headers applied to every response.

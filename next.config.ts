@@ -5,10 +5,6 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-const nextConfig: NextConfig = {
-  turbopack: {
-    root: __dirname,
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default withBundleAnalyzer(nextConfig);
