@@ -33,3 +33,7 @@ reviews:
 
 chat:
   auto_reply: true
+
+finishing_touches:
+  docstrings:
+    enabled: false
