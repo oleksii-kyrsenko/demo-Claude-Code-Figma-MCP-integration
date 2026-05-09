@@ -52,7 +52,7 @@ src/
 ├── lib/                   # Third-party clients, shared utilities
 ├── types/                 # Shared TypeScript types and interfaces
 ├── env.ts                 # Type-safe environment variable schema
-├── proxy.ts               # Security headers, auth guards, redirects
+├── middleware.ts           # Security headers, auth guards, redirects
 └── __tests__/
     ├── unit/              # *.unit.test.ts
     ├── integration/       # *.integration.test.ts
@@ -182,13 +182,11 @@ Config: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 If CodeRabbit requests changes, the PR is blocked until the issues are resolved or the review is dismissed.
 
-## Proxy
+## Middleware
 
-[`src/proxy.ts`](src/proxy.ts) runs on every request and applies security headers by default (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`).
+[`src/middleware.ts`](src/middleware.ts) runs on every request and applies security headers by default (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`).
 
 Extend it for auth guards, i18n redirects, or feature flags.
-
-> **Note:** In Next.js 16, `middleware.ts` was renamed to `proxy.ts`. The API is identical — `NextRequest`, `NextResponse`, and `matcher` config all work the same way.
 
 ## Branch Protection
 
