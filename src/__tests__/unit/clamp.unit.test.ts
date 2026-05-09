@@ -1,6 +1,11 @@
 import { clamp } from '../../utils/clamp';
 
 describe('clamp', () => {
+  it('returns the bound when min equals max', () => {
+    expect(clamp(5, 7, 7)).toBe(7);
+    expect(clamp(2, 3, 3)).toBe(3);
+  });
+
   it('returns value when within range', () => {
     expect(clamp(5, 0, 10)).toBe(5);
   });
