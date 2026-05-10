@@ -79,6 +79,11 @@ export default defineConfig([
         'error',
         { devDependencies: ['*.config.ts', '*.config.mjs', '*.config.cjs'] },
       ],
+
+      // Disabled: TypeScript handles module resolution and extension validation.
+      // The rule's resolver does not understand tsconfig `paths` (e.g. `@/`)
+      // unless eslint-import-resolver-typescript is installed.
+      'import/extensions': 'off',
     },
   },
 ]);

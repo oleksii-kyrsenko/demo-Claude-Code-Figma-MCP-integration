@@ -46,6 +46,8 @@ src/
 │   ├── page.tsx           # Home page
 │   ├── error.tsx          # Error boundary page
 │   ├── not-found.tsx      # 404 page
+│   ├── sitemap.ts         # /sitemap.xml — list of indexable URLs
+│   ├── robots.ts          # /robots.txt — crawler rules + sitemap link
 │   └── globals.css        # Global styles + CSS variables
 ├── components/            # Reusable UI components
 ├── hooks/                 # Custom React hooks
@@ -205,6 +207,13 @@ If CodeRabbit requests changes, the PR is blocked until the issues are resolved 
 Extend it for auth guards, i18n redirects, or feature flags.
 
 > **Note:** In Next.js 16, `middleware.ts` was renamed to `proxy.ts`. The API is identical — `NextRequest`, `NextResponse`, and `matcher` config all work the same way.
+
+## SEO — Sitemap & Robots
+
+- [`src/app/sitemap.ts`](src/app/sitemap.ts) — served at `/sitemap.xml`. Lists indexable URLs with `lastModified`, `changeFrequency`, and `priority`. Convert to `async` to fetch dynamic routes (CMS, products); split into multiple sitemaps with [`generateSitemaps`](https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps) once you exceed 50 000 URLs.
+- [`src/app/robots.ts`](src/app/robots.ts) — served at `/robots.txt`. Allows all crawlers by default, blocks `/api/` and `/admin/`, and points at the sitemap.
+
+Both use `env.NEXT_PUBLIC_APP_URL` so URLs stay consistent across environments. Coverage lives in [`src/__tests__/integration/sitemap-and-robots.integration.test.ts`](src/__tests__/integration/sitemap-and-robots.integration.test.ts).
 
 ## Branch Protection
 
