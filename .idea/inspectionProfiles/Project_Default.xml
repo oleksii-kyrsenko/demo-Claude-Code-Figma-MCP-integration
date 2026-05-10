@@ -1,0 +1,11 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <!--
+      Tailwind CSS v4 introduces custom at-rules (@theme, @apply, @utility, @source).
+      JetBrains IDEs flag them as unknown without the Tailwind CSS plugin.
+      Disable the inspection at the project level so all team members are aligned.
+    -->
+    <inspection_tool class="CssUnknownAtRule" enabled="false" level="WARNING" enabled_by_default="false" />
+  </profile>
+</component>

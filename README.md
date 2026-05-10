@@ -140,8 +140,19 @@ Install the recommended extensions (prompted automatically on project open):
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
-Errors are highlighted in the editor and auto-fixed on save.
+Errors are highlighted in the editor and auto-fixed on save (and on paste).
+
+### JetBrains IDEs (WebStorm / IntelliJ IDEA)
+
+Shared project settings live in `.idea/` (inspection profile, Prettier integration). The Tailwind v4 `CssUnknownAtRule` inspection is disabled at the project level so `@theme`, `@apply`, and other custom at-rules don't show as errors.
+
+For full Tailwind v4 IntelliSense, install the [Tailwind CSS plugin](https://plugins.jetbrains.com/plugin/15321-tailwind-css) from the JetBrains Marketplace.
+
+ESLint and Prettier integrations are enabled by default — fix-on-save and run-on-save behave the same as in VS Code.
+
+To match VS Code's _format-on-paste_ behaviour, open **Settings → Editor → General → Smart Keys** and set **Reformat on paste** to `Reformat Block`. The Prettier plugin will then run on paste because `myRunOnReformat` is already enabled in `.idea/prettier.xml`. (This is a per-user IDE setting, not project-shared.)
 
 ## Testing
 
