@@ -140,8 +140,17 @@ Install the recommended extensions (prompted automatically on project open):
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 Errors are highlighted in the editor and auto-fixed on save.
+
+### JetBrains IDEs (WebStorm / IntelliJ IDEA)
+
+Shared project settings live in `.idea/` (inspection profile, Prettier integration). The Tailwind v4 `CssUnknownAtRule` inspection is disabled at the project level so `@theme`, `@apply`, and other custom at-rules don't show as errors.
+
+For full Tailwind v4 IntelliSense, install the [Tailwind CSS plugin](https://plugins.jetbrains.com/plugin/15321-tailwind-css) from the JetBrains Marketplace.
+
+ESLint and Prettier integrations are enabled by default — fix-on-save and run-on-save behave the same as in VS Code.
 
 ## Testing
 
