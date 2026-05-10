@@ -15,7 +15,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/'],
+        // Block both bare and trailing-slash variants — per robots.txt spec,
+        // patterns are exact prefix matches, so `/api/` alone allows `/api`.
+        disallow: ['/api', '/api/', '/admin', '/admin/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

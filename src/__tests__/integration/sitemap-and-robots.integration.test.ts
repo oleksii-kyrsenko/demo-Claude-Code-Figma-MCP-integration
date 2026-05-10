@@ -48,13 +48,13 @@ describe('robots', () => {
     expect(rules.some((r) => r.userAgent === '*')).toBe(true);
   });
 
-  it('disallows API and admin routes', () => {
+  it('disallows API and admin routes (both bare and trailing-slash variants)', () => {
     const rules = Array.isArray(result.rules) ? result.rules : [result.rules];
     const wildcard = rules.find((r) => r.userAgent === '*');
     expect(wildcard).toBeDefined();
     const disallow = Array.isArray(wildcard!.disallow)
       ? wildcard!.disallow
       : [wildcard!.disallow ?? ''];
-    expect(disallow).toEqual(expect.arrayContaining(['/api/', '/admin/']));
+    expect(disallow).toEqual(expect.arrayContaining(['/api', '/api/', '/admin', '/admin/']));
   });
 });
