@@ -75,6 +75,10 @@ To add a new variable:
 2. Declare it in `src/env.ts` under `server` or `client`
 3. Use `env.MY_VAR` instead of `process.env.MY_VAR`
 
+### Vercel deployments
+
+`NEXT_PUBLIC_APP_URL` is auto-derived from `VERCEL_PROJECT_PRODUCTION_URL` (production) or `VERCEL_URL` (preview / branch builds) when not explicitly set, so the build succeeds on Vercel out of the box. Set the variable explicitly in the Vercel dashboard only when you need a custom canonical domain.
+
 ## Scripts
 
 | Command                          | Description                                  |
