@@ -10,7 +10,7 @@
 
     <JSCodeStyleSettings version="0">
       <option name="USE_DOUBLE_QUOTES" value="false" />
-      <option name="FORCE_QUOTE_STYlE" value="true" />
+      <option name="FORCE_QUOTE_STYLE" value="true" />
       <option name="USE_SEMICOLON_AFTER_STATEMENT" value="true" />
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="USE_TRAILING_COMMA" value="KEEP" />
@@ -21,7 +21,7 @@
 
     <TypeScriptCodeStyleSettings version="0">
       <option name="USE_DOUBLE_QUOTES" value="false" />
-      <option name="FORCE_QUOTE_STYlE" value="true" />
+      <option name="FORCE_QUOTE_STYLE" value="true" />
       <option name="USE_SEMICOLON_AFTER_STATEMENT" value="true" />
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="USE_TRAILING_COMMA" value="KEEP" />
