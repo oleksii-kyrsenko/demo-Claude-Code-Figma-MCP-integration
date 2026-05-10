@@ -134,6 +134,10 @@ Detects unused files, exports, and dependencies. Run locally with `npm run knip`
 
 Config: [`knip.config.ts`](knip.config.ts)
 
+### EditorConfig
+
+Cross-editor baseline lives in [`.editorconfig`](.editorconfig) and is honoured by VS Code, JetBrains IDEs, Sublime, Vim, Emacs, Zed, and any other editor with [EditorConfig](https://editorconfig.org) support (built-in or via plugin). Defines indentation, line endings, trailing-whitespace, and final newline rules — kept in sync with `.prettierrc`.
+
 ### VS Code
 
 Install the recommended extensions (prompted automatically on project open):
