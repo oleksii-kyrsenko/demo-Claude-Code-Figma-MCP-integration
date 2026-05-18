@@ -24,7 +24,7 @@ setup_branch() {
 {
   "required_status_checks": {
     "strict": true,
-    "contexts": ["code-quality"]
+    "contexts": ["Type Check", "Lint", "Unit Tests", "Integration Tests", "E2E Tests", "CodeRabbit"]
   },
   "enforce_admins": false,
   "required_pull_request_reviews": {
